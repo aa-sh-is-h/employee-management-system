@@ -1,0 +1,246 @@
+<div class="dark min-vh-100">
+    <nav class="darker">
+        <h2 class="text-center py-2 text-dark">Employee Management System</h2>
+
+    </nav>
+    <!-- Modal -->
+    <div class="modal fade" id="modalButton" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalLabel">{{modalTitle}}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="addEmployee" (ngSubmit)="formCondition()">
+                        <div class="row">
+                            <div class="col"><input type="text" name="firstName" id="" class="form-control"
+                                    placeholder="First Name" formControlName="firstName"></div>
+                            <div class="col"><input type="text" name="lastName" id="" class="form-control"
+                                    placeholder="Last Name" formControlName="lastName"></div>
+                        </div>
+                        <h5 class="text-center p-2">Personal Details</h5>
+                        <div class="row">
+                            <div class="col-6"><label for="dateOfBirth">Date Of Birth</label><input type="date"
+                                    name="dateOfBirth" class="form-control" id="dateOfBirth"
+                                    formControlName="dateOfBirth"></div>
+                            <div class="col-6"><label>Gender</label>
+                                <fieldset>
+                                    <input type="radio" name="gender" id="gender" value="male" formControlName="gender">
+                                    Male &nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="gender" id="gender" value="female"
+                                        formControlName="gender"> Female
+                                </fieldset>
+                            </div>
+                            <div class="col-12 pt-3">
+                                <select name="education" id="" class="form-control" formControlName="education">
+                                    <option value="" selected>Select Your Education</option>
+                                    <option value="Post Graduate">Post Graduate</option>
+                                    <option value="Graduate">Graduate</option>
+                                    <option value="Under Graduate">Under Graduate</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <h5 class="text-center p-2">Job Details</h5>
+                        <div class="row">
+                            <div class="col-12 pb-3">
+                                <select name="department" id="" class="form-control" formControlName="department">
+                                    <option value="" selected>Select Department</option>
+                                    <option value="Software Engineer">Software Engineer</option>
+                                    <option value="Human Resource">Human Resource</option>
+                                    <option value="Hr Intern">Hr Intern</option>
+                                    <option value="IT Intern">IT Intern</option>
+
+                                </select>
+                            </div>
+                            <div class="col-6"><input type="number" name="salary" id="" placeholder="Salary (LPA)"
+                                    class="form-control" formControlName="salary"></div>
+                            <div class="col-6"><input type="number" name="experience" id=""
+                                    placeholder="Experience (Years)" class="form-control" formControlName="experience">
+                            </div>
+                        </div>
+
+                        <div class="mt-2 d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#successfullyAdded">{{modalButton}}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="successfullyAdded" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-title">Data Successfully added to Database</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="deleteConfirmation" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-title">Are you sure ? </p>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        (click)="deleteFunction()">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="row d-flex align-items-center justify-content-between mb-3">
+            <div class="col">
+                <button class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#modalButton"
+                    (click)="changeModalTitle()">Add Employee</button>
+                <mat-button-toggle-group name="view" aria-selected="table">
+                    <mat-button-toggle value="table" (click)="table()">Table</mat-button-toggle>
+                    <mat-button-toggle value="card" (click)="card()">Card</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+
+            <div class="col-lg-5 col-md-4 col-sm-6 col-6 d-flex">
+                <!-- <form class="" role="search">
+                    <input class="form-control me-2 bg-transparent border-dark" type="search"
+                        placeholder="Search Employees" />
+                </form> -->
+                <select class="form-select me-2" aria-label="Default select example"
+                    (change)="filterByDepartment($event)">
+                    <option value="" selected>Filter</option>
+                    <option value="IT Intern">IT Intern</option>
+                    <option value="HR Intern">HR Intern</option>
+                    <option value="Human Resource">Human Resource</option>
+                    <option value="Software Engineer">Software Engineer</option>
+                </select>
+                <form class="form-inline col-7">
+                    <div class="input-group">
+
+                        <input type="text" class="form-control" placeholder="Search" aria-label="Username"
+                            aria-describedby="basic-addon1" [(ngModel)]="searchedString" name="searchedString">
+                        <button type="submit" class="btn btn-primary"
+                            (click)="filterBySearch($event)"><mat-icon>search</mat-icon></button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+
+
+        @if(isView){
+        <div class="customFraction d-grid gap-3">
+
+            @for(employee of filteredEmployeeList; track employee){
+            <div class="card light shadow">
+                <div class="m-2 d-flex justify-content-between border-bottom pb-2">
+                    <h5>{{employee.firstName}} {{employee.lastName}}</h5>
+                    <div>
+                        <button class="btn btn-primary me-2" (click)="updateData(employee.id)" data-bs-toggle="modal"
+                            data-bs-target="#modalButton"><mat-icon>edit</mat-icon></button>
+                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmation"
+                            (click)="deleteData(employee.id)"><mat-icon>delete</mat-icon></button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                        <h5 class="text-center border-bottom py-3">Personal Details</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item light">DoB : {{employee.dateOfBirth}}</li>
+                            <li class="list-group-item light">Gender : {{employee.gender}}</li>
+                            <li class="list-group-item light">Education : {{employee.education}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 border-start ">
+                        <h5 class="text-center border-bottom py-3">Job Details</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item light">Department : {{employee.department}}</li>
+                            <li class="list-group-item light">Salary : {{employee.salary}}</li>
+                            <li class="list-group-item light">Experience : {{employee.experience}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+        }
+        @else {
+        <div class="mat-elevation-z8">
+            <table class="bg-white" mat-table [dataSource]="datasource">
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="Name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.firstName}} {{element.lastName}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="Date Of Birth">
+                    <th mat-header-cell *matHeaderCellDef> Date Of Birth </th>
+                    <td mat-cell *matCellDef="let element"> {{element.dateOfBirth}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="Gender">
+                    <th mat-header-cell *matHeaderCellDef> Gender </th>
+                    <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="Education">
+                    <th mat-header-cell *matHeaderCellDef> Education </th>
+                    <td mat-cell *matCellDef="let element"> {{element.education}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="Department">
+                    <th mat-header-cell *matHeaderCellDef> Department </th>
+                    <td mat-cell *matCellDef="let element"> {{element.department}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="Salary">
+                    <th mat-header-cell *matHeaderCellDef> Salary </th>
+                    <td mat-cell *matCellDef="let element"> {{element.salary}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="Experience">
+                    <th mat-header-cell *matHeaderCellDef> Experience </th>
+                    <td mat-cell *matCellDef="let element"> {{element.experience}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="Action">
+                    <th mat-header-cell *matHeaderCellDef> Action </th>
+                    <td mat-cell *matCellDef="let element"> <button class="btn btn-primary me-2"
+                            (click)="updateData(element.id)" data-bs-toggle="modal"
+                            data-bs-target="#modalButton"><mat-icon>edit</mat-icon></button>
+                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmation"
+                            (click)="deleteData(element.id)"><mat-icon>delete</mat-icon></button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                aria-label="Select page of periodic elements">
+            </mat-paginator>
+        </div>
+        }
+
+    </div>
+</div>

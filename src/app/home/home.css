@@ -1,0 +1,12 @@
+.light{
+    background-color: #ffffff;
+}
+.dark{
+    background-color: #f0e4d4;
+}
+.darker{
+    background-color: #D8C3A5;
+}
+.customFraction{
+    grid-template-columns: 1fr 1fr;
+}

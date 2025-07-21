@@ -1,0 +1,140 @@
+{
+  "employeeDetails": [
+    {
+      "id": "61ef",
+      "firstName": "Somya",
+      "lastName": null,
+      "dateOfBirth": "1999-02-20",
+      "gender": "female",
+      "education": "Graduate",
+      "department": "Software Engineer",
+      "experience": "2",
+      "salary": 3
+    },
+    {
+      "id": "abf0",
+      "firstName": "Kaushal",
+      "lastName": "Kumar",
+      "dateOfBirth": "1998-04-30",
+      "gender": "male",
+      "education": "Graduate",
+      "department": "Software Engineer",
+      "experience": "3",
+      "salary": 5
+    },
+    {
+      "id": "a241",
+      "firstName": "Shivansh",
+      "lastName": "Singh",
+      "dateOfBirth": "2001-12-10",
+      "gender": "male",
+      "education": "Graduate",
+      "department": "IT Intern",
+      "experience": "0",
+      "salary": 0
+    },
+    {
+      "id": "7146",
+      "firstName": "Pankaj",
+      "lastName": "",
+      "dateOfBirth": "2001-11-13",
+      "gender": "male",
+      "education": "Graduate",
+      "department": "Software Engineer",
+      "experience": "1",
+      "salary": 3
+    },
+    {
+      "id": "0e4f",
+      "firstName": "Love",
+      "lastName": "Bhardwaj",
+      "dateOfBirth": "2000-06-09",
+      "gender": "male",
+      "education": "Post Graduate",
+      "department": "IT Intern",
+      "experience": "0",
+      "salary": 0
+    },
+    {
+      "id": "c5fc",
+      "firstName": "Aashish",
+      "lastName": "Sambharwal",
+      "dateOfBirth": "1999-02-27",
+      "gender": "male",
+      "education": "Post Graduate",
+      "department": "IT Intern",
+      "experience": "0",
+      "salary": 0
+    },
+    {
+      "id": "9ba2",
+      "firstName": "K",
+      "lastName": "D",
+      "dateOfBirth": "1990-05-10",
+      "gender": "male",
+      "education": "Graduate",
+      "department": "Human Resource",
+      "experience": "10",
+      "salary": 8
+    },
+    {
+      "id": "7539",
+      "firstName": "Kumar",
+      "lastName": "Vikram",
+      "dateOfBirth": "2000-05-10",
+      "gender": "male",
+      "education": "Post Graduate",
+      "department": "IT Intern",
+      "experience": "0",
+      "salary": 0
+    },
+    {
+      "id": "4042",
+      "firstName": "Shweta",
+      "lastName": "Kumari",
+      "dateOfBirth": "2001-09-22",
+      "gender": "female",
+      "education": "Graduate",
+      "department": "IT Intern",
+      "experience": "0",
+      "salary": 0
+    },
+    {
+      "id": "8a21",
+      "firstName": "Lokesh",
+      "lastName": "Kumar",
+      "dateOfBirth": "1999-02-11",
+      "gender": "male",
+      "education": "Graduate",
+      "department": "IT Intern",
+      "experience": "0",
+      "salary": 0
+    },
+    {
+      "firstName": "Avdhesh",
+      "lastName": "Kumar",
+      "dateOfBirth": "2001-06-15",
+      "gender": "male",
+      "education": "Graduate",
+      "department": "Hr Intern",
+      "experience": 3,
+      "salary": 0,
+      "id": "0ca5"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
