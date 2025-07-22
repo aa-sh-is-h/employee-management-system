@@ -1,17 +1,6 @@
 {
   "employeeDetails": [
     {
-      "id": "61ef",
-      "firstName": "Somya",
-      "lastName": null,
-      "dateOfBirth": "1999-02-20",
-      "gender": "female",
-      "education": "Graduate",
-      "department": "Software Engineer",
-      "experience": "2",
-      "salary": 3
-    },
-    {
       "id": "abf0",
       "firstName": "Kaushal",
       "lastName": "Kumar",
@@ -120,6 +109,17 @@
       "experience": 3,
       "salary": 0,
       "id": "0ca5"
+    },
+    {
+      "id": "5e16",
+      "firstName": "AASHISH",
+      "lastName": "SAMBHARWAL",
+      "dateOfBirth": "",
+      "gender": "",
+      "education": "",
+      "department": "",
+      "experience": null,
+      "salary": null
     }
   ],
   "comments": [
